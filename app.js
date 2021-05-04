@@ -8,7 +8,7 @@ const a = new Promise((resolve, reject) => {
             port: 2000,
             status: 'working'
         }
-        resolve(backendData)
+        reject(backendData)
     }, 2000)
 })
 
@@ -20,7 +20,6 @@ a.then(data => {
         }, 2000)
     })
 })
-    .catch(err => console.log('Error: ', err))
     .then(clientData => {
         clientData.fromPromise = true
         return clientData
@@ -28,4 +27,5 @@ a.then(data => {
     .then(data => {
         console.log('Modified', data)
     })
+    .catch(err => console.log('Error: ', err))
     .finally(() => console.log('Finally!'))
